@@ -160,6 +160,7 @@ class Plugin_Name {
         $this->loader->add_action("admin_menu", $plugin_admin, "setupAdminMenu");
 
         $this->loader->add_action("add_meta_boxes", $plugin_admin, "wporg_add_custom_box");
+        $this->loader->add_action("save_post", $plugin_admin, "wporg_save_postdata");
 	}
 
 	/**

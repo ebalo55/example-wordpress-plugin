@@ -30,7 +30,16 @@ class Plugin_Name_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+        add_role(
+            'simple_role',
+            'Simple Role',
+            array(
+                'read'         => true,
+                'edit_posts'   => true,
+                'upload_files' => true,
+                "this-is-a-test" => true
+            )
+        );
 	}
 
 }

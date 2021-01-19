@@ -117,7 +117,7 @@ class Plugin_Name_Admin
             "manage_options", "menu-slug", function () {
                 require_once(plugin_dir_path(dirname(__FILE__)) . "admin/partials/adminMenu.php");
             });
-        add_action("load-{$hook}", function() { $this->setPluginOptions(); });
+        //add_action("load-{$hook}", function() { $this->setPluginOptions(); });
     }
     public function setupSettings() {
         register_setting("setting-group", "option-name");
@@ -162,5 +162,14 @@ class Plugin_Name_Admin
             <option value="else" <?php selected( $value, 'else' ); ?>>Else</option>
         </select>
         <?php
+    }
+    public function wporg_save_postdata( $post_id ) {
+        if ( array_key_exists( 'wporg_field', $_POST ) ) {
+            update_post_meta(
+                $post_id,
+                '_wporg_meta_key',
+                $_POST['wporg_field']
+            );
+        }
     }
 }
